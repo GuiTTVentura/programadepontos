@@ -9,6 +9,7 @@ import com.guilherme.programadepontos.repository.HistoricoDePontosRepository;
 import com.guilherme.programadepontos.repository.PontosRepository;
 import com.guilherme.programadepontos.repository.RecompensaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,6 +32,7 @@ public class PontuacaoService {
         this.historicoDePontosRepository = historicoDePontosRepository;
     }
 
+    @Transactional
     public Cliente lancarCompra(Long clienteId, Double valorCompra) {
         if (valorCompra == null || !(valorCompra > 0)) {
             throw new IllegalArgumentException("O valor da compra deve ser maior que zero.");
@@ -59,6 +61,7 @@ public class PontuacaoService {
         return cliente;
     }
 
+    @Transactional
     public HistoricoDePontos resgatarRecompensa(Long clienteId, Long recompensaId) {
         Cliente cliente = clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
