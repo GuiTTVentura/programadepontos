@@ -76,4 +76,3 @@ public class ClienteService {
     return texto.replaceAll("[^0-9]", "");
     }
 }
-
