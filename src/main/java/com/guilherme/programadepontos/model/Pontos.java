@@ -11,12 +11,12 @@ public class Pontos {
     @GeneratedValue
     private Long id;
     private Integer valorBasePontos;
-    private Double valorCompra;
+    private Integer pontosIniciaisCadastro;
 
     public Pontos() {
     }
 
-    public Integer calcularPontos() {
+    public Integer calcularPontos(Double valorCompra) {
         if (valorBasePontos == null || valorCompra == null || valorBasePontos <= 0 || valorCompra <= 0) {
             return 0;
         }
@@ -40,11 +40,11 @@ public class Pontos {
         this.valorBasePontos = valorBasePontos;
     }
 
-    public Double getValorCompra() {
-        return valorCompra;
+    public Integer getPontosIniciaisCadastro() {
+        return pontosIniciaisCadastro;
     }
 
-    public void setValorCompra(Double valorCompra) {
-        this.valorCompra = valorCompra;
+    public void setPontosIniciaisCadastro(Integer pontosIniciaisCadastro) {
+        this.pontosIniciaisCadastro = pontosIniciaisCadastro;
     }
 }

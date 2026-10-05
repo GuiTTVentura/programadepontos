@@ -3,8 +3,9 @@ package com.guilherme.programadepontos.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class HistoricoDePontos {
@@ -12,29 +13,16 @@ public class HistoricoDePontos {
     @Id
     @GeneratedValue
     private Long id;
-    private String nomeCliente;
-    private LocalDate data;
-    private String recompensaResgatada;
+    @ManyToOne
+    private Cliente cliente;
+    private String tipoTransacao;
+    private Integer pontos;
     private Double valorCompra;
-    private Integer saldoDePontos;
+    @ManyToOne
+    private Recompensa recompensa;
+    private LocalDateTime dataHora;
 
     public HistoricoDePontos() {
-    }
-
-    public HistoricoDePontos(Long id, String nomeCliente, LocalDate data, Double valorCompra, Integer saldoDePontos) {
-        this.id = id;
-        this.nomeCliente = nomeCliente;
-        this.data = data;
-        this.valorCompra = valorCompra;
-        this.saldoDePontos = saldoDePontos;
-    }
-
-    public HistoricoDePontos(Long id, String nomeCliente, LocalDate data, String recompensaResgatada, Integer saldoDePontos) {
-        this.id = id;
-        this.nomeCliente = nomeCliente;
-        this.data = data;
-        this.recompensaResgatada = recompensaResgatada;
-        this.saldoDePontos = saldoDePontos;
     }
 
     public Long getId() {
@@ -45,28 +33,28 @@ public class HistoricoDePontos {
         this.id = id;
     }
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public LocalDate getData() {
-        return data;
+    public String getTipoTransacao() {
+        return tipoTransacao;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setTipoTransacao(String tipoTransacao) {
+        this.tipoTransacao = tipoTransacao;
     }
 
-    public String getRecompensaResgatada() {
-        return recompensaResgatada;
+    public Integer getPontos() {
+        return pontos;
     }
 
-    public void setRecompensaResgatada(String recompensaResgatada) {
-        this.recompensaResgatada = recompensaResgatada;
+    public void setPontos(Integer pontos) {
+        this.pontos = pontos;
     }
 
     public Double getValorCompra() {
@@ -77,11 +65,19 @@ public class HistoricoDePontos {
         this.valorCompra = valorCompra;
     }
 
-    public Integer getSaldoDePontos() {
-        return saldoDePontos;
+    public Recompensa getRecompensa() {
+        return recompensa;
     }
 
-    public void setSaldoDePontos(Integer saldoDePontos) {
-        this.saldoDePontos = saldoDePontos;
+    public void setRecompensa(Recompensa recompensa) {
+        this.recompensa = recompensa;
+    }
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
 }
