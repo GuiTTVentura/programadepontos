@@ -54,6 +54,7 @@ public class PontuacaoService {
         historico.setCliente(cliente);
         historico.setTipoTransacao("ACUMULO_COMPRA");
         historico.setPontos(pontosGerados);
+        historico.setSaldoMomento(cliente.getSaldoPontos());
         historico.setValorCompra(valorCompra);
         historico.setDataHora(LocalDateTime.now());
         historicoDePontosRepository.save(historico);
@@ -85,6 +86,7 @@ public class PontuacaoService {
         historico.setCliente(cliente);
         historico.setTipoTransacao("RESGATE_RECOMPENSA");
         historico.setPontos(-pontosNecessarios);
+        historico.setSaldoMomento(cliente.getSaldoPontos());
         historico.setRecompensa(recompensa);
         historico.setDataHora(LocalDateTime.now());
 
